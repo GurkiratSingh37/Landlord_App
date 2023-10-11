@@ -3,6 +3,7 @@
 const logging = require('../logging/logging');
 const jwtService = require('../services/jwtServce');
 const responses = require('../responses/responses');
+const redis = require('../database/redislib');
 
 exports.authenticateUser = async(res, req, next)=>{
   let apiReference = req.apiReference;
@@ -16,11 +17,7 @@ exports.authenticateUser = async(res, req, next)=>{
     next();
   }
 
-  await validations(req, res, next);
-}
-
-const validations = async(req, res, next)=>{
-
+  // getting token from the headers
   let requestHeaders = {...req.headers};
 
   let decodedToken = await jwtService.verifyJwt(req.apiReference, requestHeaders["access-token"]);
@@ -28,4 +25,11 @@ const validations = async(req, res, next)=>{
   if(!decodedToken){
     return responses.invalidAuthKey(res);
   }
+
+  if(requestHeaders["access-token"] != redis.get(req.apiReference, decodedToken.user_id)){
+    return responses.tokenExpired(res);
+  }
+
+  res.locals.auth_details = decodedToken;
+  return next();
 }

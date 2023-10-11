@@ -11,3 +11,6 @@ global.app = app;
 require('./middleware');
 require('./modules');
 require('./startup').initializeServer();
+
+exports.router = router;
+exports.app = app;

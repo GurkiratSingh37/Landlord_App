@@ -17,3 +17,11 @@ exports.redis = {
   password    : config.get('dbProperties.redis.password'),
   prefix      : config.get('dbProperties.redis.prefix')
 };
+
+exports.mongodb = {
+  host      : config.get('dbProperties.mongodb.host'),
+  port      : config.get('dbProperties.mongodb.port'),
+  username  : config.get('dbProperties.mongodb.username'),
+  password  : config.get('dbProperties.mongodb.password'),
+  database  : config.get('dbProperties.mongodb.database')
+}
