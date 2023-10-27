@@ -14,7 +14,8 @@ const messages = {
   PARAMETER_MISSING       : "Insufficient information was supplied. Please check and try again.",
   INTERNAL_SERVER_ERROR   : "Some error occurred.",
   SUCCESS                 : "Success",
-  FAILURE                 : "Failure"
+  FAILURE                 : "Failure",
+  DUPLICATE               : "Duplicate value in database.",
 }
 
 const modules = {

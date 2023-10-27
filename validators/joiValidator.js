@@ -4,6 +4,10 @@ const Joi       = require('joi');
 const logging   = require('../logging/logging');
 const responses = require('../responses/responses');
 
+let headersStructure = Joi.object().keys({
+  access_token: Joi.string().required()
+})
+
 const joiValidate = async(apiReference, body, schema, options, res, msg)=>{
   logging.log(apiReference, {EVENT: "validateFields", BODY: body});
   try{

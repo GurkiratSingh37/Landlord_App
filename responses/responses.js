@@ -6,16 +6,16 @@ const tokenExpired = async(res, data, message)=>{
   const response = {
     status: responseConstants.status.SESSION_EXPIRED,
     message: message || responseConstants.messages.SESSION_EXPIRED,
-    data: {} || data
+    data: data || {}
   };
   this.sendResponse(res, response);
 }
 
-const parameterMissingResponse = async(res, data, message)=>{
+const parameterMissingResponse = async(res, err, data)=>{
   const response = {
     status: responseConstants.status.BAD_REQUEST,
-    message: message || responseConstants.messages.PARAMETER_MISSING,
-    data: {} || data
+    message: err || responseConstants.messages.PARAMETER_MISSING,
+    data: data || {}
   };
   this.sendResponse(res, response);
 }
@@ -29,11 +29,15 @@ const success = async(res, data, message)=>{
   this.sendResponse(res, response);
 }
 
+const sendResponse = (res, data)=>{
+  res.status(data.status).send(data);
+}
+
 const failure = async(res, data, message)=>{
   const response = {
     data: data || {},
-    status: responseConstants.messages.FAILURE,
-    message: message || responseConstants.status.UNAUTHORIZED
+    status: responseConstants.status.UNAUTHORIZED,
+    message: message || responseConstants.messages.FAILURE
   }
   this.sendResponse(res, response);
 }
@@ -57,6 +61,7 @@ const internalServerError = async(res, data, message)=>{
   this.sendResponse(res, response);
 }
 
+exports.sendResponse              = sendResponse;
 exports.tokenExpired              = tokenExpired;
 exports.responses                 = responses;
 exports.parameterMissingResponse  = parameterMissingResponse;

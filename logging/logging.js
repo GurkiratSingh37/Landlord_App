@@ -5,12 +5,16 @@ const moment = require('moment');
 let debugging_enabled = true; // for log & logError to run
 
 const fileSwitch = {
-  startup: true
+  startup : true,
+  register: true,
 }
 
 const modules = {
   startup: {
     initialize: true
+  },
+  register: {
+    register: true
   }
 }
 
@@ -43,7 +47,13 @@ const logError = (apiReference, opts)=>{
     apiReference.api &&
     debugging_enabled
     ){
-      console.error();
+      try{
+        opts = JSON.stringify(opts);
+      }
+      catch(exception){
+        console.log(">>> Exception <<<", exception)
+      }
+      console.error('-->', moment(new Date()).format('YYYY-MM-DD HH:mm:ss.SSS') + ' :----: ', apiReference.module, ':==:', apiReference.api, ':==:', opts);
     }
 }
 
