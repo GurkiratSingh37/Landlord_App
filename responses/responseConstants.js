@@ -16,10 +16,13 @@ const messages = {
   SUCCESS                 : "Success",
   FAILURE                 : "Failure",
   DUPLICATE               : "Duplicate value in database.",
+  NOT_FOUND               : "No Data Found!",
+  INVALID_CREDS           : "Invalid Credentials!",
 }
 
 const modules = {
-  REGISTER: "register"
+  REGISTER        : "register",
+  LOGIN           : "login",
 }
 
 exports.status    = status;

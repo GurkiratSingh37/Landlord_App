@@ -56,6 +56,11 @@ exports.fetchDetails = async(apiReference, opts)=>{
     matchQuery.username = opts.username;
   }
 
+  // if(opts.loginFetch){
+  //   matchQuery.email = opts.userNameOrEmail;
+  //   matchQuery.username = opts.userNameOrEmail;
+  // }
+
   /**
   let queryResponse = await registerModel.findOne({
     email: opts.email

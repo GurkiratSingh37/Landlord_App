@@ -23,8 +23,8 @@ const parameterMissingResponse = async(res, err, data)=>{
 const success = async(res, data, message)=>{
   const response = {
     data: data || {},
-    status: responseConstants.messages.SUCCESS,
-    message: message || responseConstants.status.SUCCESS
+    status: responseConstants.status.SUCCESS,
+    message: message || responseConstants.messages.SUCCESS
   }
   this.sendResponse(res, response);
 }

@@ -61,7 +61,7 @@ const registerSchema = new Schema(
   }
 )
 
-registerSchema.index({email: 1, phone_number: 1}, {unique: true}); // to make email and phoneNumber unique
+registerSchema.index({email: 1, phone_number: 1, username: 1}, {unique: true}); // to make email and phoneNumber unique
 
 const registerModel = mongoose.model("register", registerSchema);
 module.exports = registerModel;

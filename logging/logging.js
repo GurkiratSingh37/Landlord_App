@@ -7,6 +7,7 @@ let debugging_enabled = true; // for log & logError to run
 const fileSwitch = {
   startup : true,
   register: true,
+  login   : true
 }
 
 const modules = {
@@ -15,6 +16,9 @@ const modules = {
   },
   register: {
     register: true
+  },
+  login: {
+    loginWithPassword: true
   }
 }
 

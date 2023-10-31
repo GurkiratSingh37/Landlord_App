@@ -10,7 +10,6 @@ const payload = (opts)=>{
     name          : opts.name,
     username      : opts.username,
     email         : opts.email,
-    password      : opts.password,
     country_code  : opts.country_code,
     phone_number  : opts.phone_number
   }
